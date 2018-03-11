@@ -1,0 +1,65 @@
+package aps.com.pcounter;
+
+import android.graphics.Color;
+import android.support.annotation.ColorInt;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    Button btn1,btn2;
+    TextView txt1;
+    int count;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        btn1=(Button)findViewById(R.id.btn1);
+        btn2=(Button)findViewById(R.id.btn2);
+        txt1=(TextView)findViewById(R.id.txt1);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickMe(view);
+            }
+        });
+    }
+
+    public void Toast(View view) {
+        Toast.makeText(this, "Counter Value is "+count+"...", Toast.LENGTH_SHORT).show();
+
+    }
+
+    public void clickMe(View view){ //onclick method
+
+        count=count+1;
+        int cyan= Color.CYAN;
+        int pd = Color.BLUE;
+        int red = Color.RED;
+        txt1.setText(Integer.toString(count)); //set integet in textview
+        if (count==10)
+        {
+            txt1.setBackgroundColor(red); //color property
+            count=-1;
+            Toast.makeText(this, "Counter Reset", Toast.LENGTH_SHORT).show();
+
+        }else if (count==1){
+            txt1.setBackgroundColor(pd); //color property
+        }
+        else {
+            txt1.setBackgroundColor(cyan);
+
+        }
+
+
+    }
+
+}
+

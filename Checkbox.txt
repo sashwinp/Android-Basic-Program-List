@@ -1,0 +1,78 @@
+package aps.com.pcheckradio;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    RadioGroup radiogroup1;
+    CheckBox panipuri1,bhel1,pizza1;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        radiogroup1=(RadioGroup)findViewById(R.id.radiogroup1);
+        panipuri1=(CheckBox)findViewById(R.id.panipuri1);
+        bhel1=(CheckBox)findViewById(R.id.bhel1);
+        pizza1=(CheckBox)findViewById(R.id.pizza1);
+
+    panipuri1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+            if (b) {
+                Toast.makeText(MainActivity.this, "You are selected", Toast.LENGTH_SHORT).show();
+            } else
+            {
+                Toast.makeText(MainActivity.this, "Please selected", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+    });
+
+        bhel1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    Toast.makeText(MainActivity.this, "You are selected", Toast.LENGTH_SHORT).show();
+                } else
+                {
+                    Toast.makeText(MainActivity.this, "Please selected", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+        pizza1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    Toast.makeText(MainActivity.this, "You are selected", Toast.LENGTH_SHORT).show();
+                } else
+                {
+                    Toast.makeText(MainActivity.this, "Please selected", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+
+
+    }
+
+    public void check(View view) {
+
+        int id= radiogroup1.getCheckedRadioButtonId();
+        RadioButton rb=findViewById(id);
+        Toast.makeText(getApplicationContext(),rb.getText().toString(),Toast.LENGTH_SHORT).show();
+
+
+    }
+}

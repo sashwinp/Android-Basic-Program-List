@@ -1,0 +1,38 @@
+package aps.com.pdatepickerdialog;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+    Button button1;
+    TextView textView1;
+    DatePicker datepicker1;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        button1=findViewById(R.id.button1);
+        textView1=findViewById(R.id.textview1);
+        datepicker1=findViewById(R.id.datepicker1);
+        textView1.setText("Display date");
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                textView1.setText(currentDate());
+            }
+        });
+    }
+
+    public String currentDate() {
+        StringBuilder mcurrentDate=new StringBuilder();
+        int month = datepicker1.getMonth() + 1;
+        mcurrentDate.append("Date :"+month+"/"+datepicker1.getDayOfMonth()+"/"+datepicker1.getYear());
+        return mcurrentDate.toString();
+
+    }
+}

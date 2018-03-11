@@ -1,0 +1,36 @@
+package aps.com.pcalanderview;
+
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.CalendarView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Calendar;
+
+public class MainActivity extends AppCompatActivity {
+    CalendarView cal;
+    TextView txtDate,txtshowdate,txtcalanderview;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        txtDate=findViewById(R.id.txtDate);
+        txtshowdate=findViewById(R.id.txtshowdate);
+        txtcalanderview=findViewById(R.id.txtcalanderview);
+        cal=findViewById(R.id.cal);
+
+        txtshowdate.setText("DATE:");
+        cal.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
+                txtshowdate.setText("Date:"+i2+"/"+i1+"/"+i);
+                Toast.makeText(getApplicationContext(),"Selected Date:\n"+"Day="+i2+"\n"+"Month="+i1+"\n"+"Year="+i,Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
+}
